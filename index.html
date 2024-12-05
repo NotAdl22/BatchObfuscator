@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
@@ -6,66 +6,133 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <script type="text/javascript" src="obfu.js"></script>
     <style>
-        table {
-            color: #888888;
-            font-size: 11px;
-            text-align: center;
-            margin: 0px auto 5px auto;
-            border: 1px solid #000000;
-        }
+      
         body {
-            background: #333333;
-            color: #000000;
-            font-family: Verdana;
-            font-size: 11px;
-            margin: 0px;
-            padding: 0px;
+            background-color: #2b2f34; 
+            color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+      
+        .wrap {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #3a3f45;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
             text-align: center;
         }
-        textarea {
-            height: 400px;
-            width: 600px;
-            font-family: Verdana;
-            border: 1px solid #000000;
-            color: #AAAAAA;
-            font-size: 11px;
-            background: #444444;
-            display: inline;
-            margin: 0px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+
+    
+        .noir {
+            background: #0d6627;
+            border-bottom: 2px solid #1f8a44;
+            border-top: 2px solid #1f8a44;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: white;
+            font-size: 24px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease-in-out;
         }
-        textarea:focus {
-            background-color: #555555;
+
+        .noir:hover {
             transform: scale(1.05);
         }
-        .noir {
-            background: #000000;
-            border-bottom: 2px solid #000000;
-            border-top: 2px solid #000000;
-        }
-        .dropzone {
-            border: 2px dashed #888888;
+
+       
+        textarea {
+            width: 100%;
+            height: 350px;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+            color: #f4f4f4;
+            background-color: #444d56;
+            border: 1px solid #555;
+            border-radius: 5px;
+            margin-bottom: 20px;
             padding: 10px;
-            margin: 10px auto;
-            color: #AAAAAA;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
+        textarea:focus {
+            background-color: #567a56;
+            transform: scale(1.02);
+        }
+
+       
+        .dropzone {
+            border: 2px dashed #87c29b;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: #d8f1d4;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
         .dropzone:hover {
-            background-color: #555555;
+            background-color: #4f5b4b;
+            transform: scale(1.05);
         }
+
+       
         .copy-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #444444;
-            color: #AAAAAA;
-            border: 1px solid #000000;
+            background-color: #1e7e34;
+            color: #f4f4f4;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 12px;
-            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         .copy-button:hover {
-            background-color: #555555;
+            background-color: #267b2f;
+            transform: scale(1.1);
+        }
+
+        .copy-button:active {
+            background-color: #20622b;
+            transform: scale(1.05);
+        }
+
+      
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        
+        .obfu-container {
+            position: relative;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
         }
     </style>
 </head>
@@ -77,24 +144,19 @@
             <button onclick="document.getElementById('fileInput').click();">Select File</button>
             <input type="file" id="fileInput" accept=".txt,.bat" style="display: none;" />
         </div>
-        <br>
-        <table align="center" cellspacing="1" style="text-align: center">
+
+        <table>
             <tr>
                 <td>
                     <div class="noir">Batch Code</div>
-                </td>
-                <td>
-                    <div class="noir">Batch Code Obfu</div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
                     <textarea id="Code" name="BatchCodeTextArea" oninput="printCode();"></textarea>
                 </td>
-                <td>
+                <td class="obfu-container">
+                    <div class="noir">Batch Code Obfu</div>
                     <textarea id="ObfCode" name="BatchCodeObfTextArea"></textarea>
-                    <button class="copy-button" id="copyButton" onclick="copyToClipboard()">Copy</button>
+                    <div class="button-container">
+                        <button class="copy-button" id="copyButton" onclick="copyToClipboard()">Copy</button>
+                    </div>
                 </td>
             </tr>
         </table>
