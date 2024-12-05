@@ -9,6 +9,10 @@ Welcome to the **Batch Obfuscator Tool**! This online tool is designed specifica
 - Simple, secure, and efficient online tool.
 - Protect your scripts from unauthorized access and tampering.
 
+## 🌐 How to Use
+You can easily use the Batch Obfuscator Tool by visiting the following link:  
+[https://notadl22.github.io/BatchObfuscator/](https://notadl22.github.io/BatchObfuscator/)
+
 ## 📲 Support
 For questions or support, connect with us:
 - **Telegram**: [@Chef_lilou](https://t.me/Chef_lilou)
