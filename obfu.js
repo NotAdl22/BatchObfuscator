@@ -3,13 +3,12 @@ function printCode() {
     const textareaobf = document.getElementById('ObfCode');
     const code = textarea.value;
 
-  
     if (code.trim() === "") {
         textareaobf.value = "";
         return;
     }
 
-    const set = "a" + Math.random().toString(36).substring(10); // Random set
+    const set = "a" + Math.random().toString(36).substring(10); 
     const letters = Array.from("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").sort(() => Math.random() - 0.5).join('');
     const setlettre = "Set " + set + "=" + letters;
     let codeobfu = "";
@@ -35,10 +34,9 @@ window.onload = function () {
     const textarea = document.getElementById('Code');
     const fileInput = document.getElementById('fileInput');
 
-
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropZone.style.backgroundColor = '#555555';
+        dropZone.style.backgroundColor = '#4f5b4b';
     });
 
     dropZone.addEventListener('dragleave', () => {
@@ -51,7 +49,6 @@ window.onload = function () {
         const file = e.dataTransfer.files[0];
         handleFile(file);
     });
-
 
     fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -72,7 +69,6 @@ window.onload = function () {
     }
 };
 
-
 function copyToClipboard() {
     const obfTextarea = document.getElementById('ObfCode');
     const copyButton = document.getElementById('copyButton');
@@ -88,3 +84,4 @@ function copyToClipboard() {
         alert("Nothing to copy!");
     }
 }
+
