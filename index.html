@@ -54,12 +54,29 @@
         .dropzone:hover {
             background-color: #555555;
         }
+        .copy-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #444444;
+            color: #AAAAAA;
+            border: 1px solid #000000;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+        }
+        .copy-button:hover {
+            background-color: #555555;
+        }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <div class="dropzone" id="dropZone">Drag and drop your .bat or .txt file here</div>
+        <div class="dropzone" id="dropZone">
+            Drag and drop your .bat or .txt file here or 
+            <button onclick="document.getElementById('fileInput').click();">Select File</button>
+            <input type="file" id="fileInput" accept=".txt,.bat" style="display: none;" />
+        </div>
         <br>
         <table align="center" cellspacing="1" style="text-align: center">
             <tr>
@@ -77,6 +94,7 @@
                 </td>
                 <td>
                     <textarea id="ObfCode" name="BatchCodeObfTextArea"></textarea>
+                    <button class="copy-button" id="copyButton" onclick="copyToClipboard()">Copy</button>
                 </td>
             </tr>
         </table>
